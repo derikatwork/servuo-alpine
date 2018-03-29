@@ -16,9 +16,10 @@ RUN apk add --no-cache bash \
     addgroup uo; \
     adduser -D -S uo -s /bin/bash -h ${UO_HOME} -g "UO server user" -G uo; \
     chown -R uo:uo ${UO_HOME}; \
-    git clone https://github.com/ServUO/ServUO ${UO_HOME}/ServUO; \
+    git clone https://github.com/ServUO/ServUO ${UO_HOME}/ServUO
 
 COPY docker-entrypoint.sh /
+COPY AccountPrompt.cs ${UO_HOME}/ServUO/Scripts/Misc
 RUN chmod +x /docker-entrypoint.sh
 
 EXPOSE 2593
