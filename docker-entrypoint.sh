@@ -2,15 +2,15 @@
 
 set -xe
 
-cd /UO/ServUO
-
 if [ ! -d /UO/ServUO ]; then
     git clone https://github.com/ServUO/ServUO /UO/ServUO
     cp /AccountPrompt.cs /UO/ServUO/Scripts/Misc/
 else
+    cd /UO/ServUO
     git pull -f
 fi
 
+cd /UO/ServUO
 chown -R uo:uo /UO
 
 sed -i -- 's/CompilerResults results = provider.CompileAssemblyFromFile( parms, "" );/CompilerResults results = provider.CompileAssemblyFromFile( parms, files );/g' ./Server/ScriptCompiler.cs
