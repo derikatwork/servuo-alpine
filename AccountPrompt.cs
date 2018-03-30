@@ -9,7 +9,7 @@ namespace Server.Misc
         {
             if (Accounts.Count == 0 && !Core.Service)
             {
-                Account a = new Account("username", "password");
+                Account a = new Account("admin", "admin");
                 a.AccessLevel = AccessLevel.Owner;
             }
         }

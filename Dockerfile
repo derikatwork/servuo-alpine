@@ -3,9 +3,6 @@ FROM alpine:3.7
 ENV UO_HOME /UO
 VOLUME /client /UO
 
-ARG USERNAME=admin
-ARG PASSWORD=admin
-
 RUN echo "http://dl-4.alpinelinux.org/alpine/edge/testing" >> /etc/apk/repositories
 
 RUN apk add --no-cache bash \
@@ -20,9 +17,6 @@ RUN apk add --no-cache bash \
 
 COPY docker-entrypoint.sh /
 COPY AccountPrompt.cs /
-
-RUN sed -i "s/username/$USERNAME/g" /AccountPrompt.cs
-RUN sed -i "s/password/$PASSWORD/g" /AccountPrompt.cs
 
 RUN chmod +x /docker-entrypoint.sh
 
